@@ -91,5 +91,5 @@ When using the laravelsail/phpXX-composer image, you should use the same version
 ### 4. Database configuration
 
 ```bash
-php artisan migrate:freash --seed
+php artisan migrate:fresh --seed
 ```
