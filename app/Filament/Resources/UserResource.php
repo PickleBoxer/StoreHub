@@ -35,6 +35,10 @@ class UserResource extends Resource
                 Forms\Components\TextInput::make('password')
                     ->password()
                     ->required()
+                    // don't want to overwrite the existing password if the field is empty
+                    ->dehydrated(fn ($state) => filled($state))
+                    // only required on create
+                    ->required(fn (string $context): bool => $context === 'create')
                     ->maxLength(255),
                 Forms\Components\Textarea::make('two_factor_secret')
                     ->maxLength(65535)
@@ -45,8 +49,8 @@ class UserResource extends Resource
                 Forms\Components\DateTimePicker::make('two_factor_confirmed_at'),
                 Forms\Components\TextInput::make('current_team_id')
                     ->numeric(),
-                Forms\Components\TextInput::make('profile_photo_path')
-                    ->maxLength(2048),
+                Forms\Components\FileUpload::make('profile_photo_path')
+                    ->avatar(),
                 Forms\Components\Select::make('roles')
                     ->relationship('roles', 'name')
                     ->multiple()
