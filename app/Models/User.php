@@ -8,6 +8,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Laravel\Jetstream\HasProfilePhoto;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
+use BezhanSalleh\FilamentShield\Traits\HasPanelShield;
 use Filament\Models\Contracts\FilamentUser;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -23,6 +24,7 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
     use Notifiable;
     use TwoFactorAuthenticatable;
     use HasRoles;
+    use HasPanelShield;
 
     /**
      * The attributes that are mass assignable.
@@ -62,9 +64,4 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
     protected $appends = [
         'profile_photo_url',
     ];
-
-    public function canAccessPanel(Panel $panel): bool
-    {
-        return true;
-    }
 }
