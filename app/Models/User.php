@@ -8,7 +8,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Laravel\Jetstream\HasProfilePhoto;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
-//use BezhanSalleh\FilamentShield\Traits\HasPanelShield;
+use BezhanSalleh\FilamentShield\Traits\HasPanelShield;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Models\Contracts\HasAvatar;
 use Laravel\Fortify\TwoFactorAuthenticatable;
@@ -25,7 +25,7 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail, Has
     use Notifiable;
     use TwoFactorAuthenticatable;
     use HasRoles;
-    //use HasPanelShield;
+    use HasPanelShield;
 
     /**
      * The attributes that are mass assignable.
@@ -66,19 +66,21 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail, Has
         'profile_photo_url',
     ];
 
+    /* Handeled by HasPanelShield trait
     public function canAccessPanel(Panel $panel): bool
     {
         return $this->isAdmin() && $this->hasVerifiedEmail();
     }
+    */
 
     public function isSuperAdmin(): bool
     {
-        return $this->hasRole('super_admin');
+        return $this->hasRole('Super Admin');
     }
 
     public function isAdmin(): bool
     {
-        return $this->isSuperAdmin() || $this->hasRole('admin');
+        return $this->isSuperAdmin() || $this->hasRole('Admin');
     }
 
     public function getFilamentAvatarUrl(): ?string

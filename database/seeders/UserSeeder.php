@@ -23,7 +23,7 @@ class UserSeeder extends Seeder
         ]);
 
         // Attach the super admin role to the admin user
-        $admin->assignRole(Role::whereName('super_admin')->firstOrFail());
+        $admin->assignRole(Role::whereName('Super Admin')->firstOrFail());
         // Create a personal team for the admin user for Jetstream
         $this->createTeam($admin);
     }
