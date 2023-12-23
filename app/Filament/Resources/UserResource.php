@@ -6,6 +6,7 @@ use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
 use Filament\Forms;
+use Filament\Forms\Components\Tabs\Tab;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -58,21 +59,36 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\ImageColumn::make('profile_photo_url')
+                    ->label('Avatar')
+                    ->circular(),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('email_verified_at')
-                    ->dateTime()
+                Tables\Columns\IconColumn::make('email_verified_at')
+                    ->label('Email Verified')
+                    ->boolean()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('two_factor_confirmed_at')
                     ->dateTime()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('roles.name')
+                    ->wrap()
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'User' => 'gray',
+                        'reviewing' => 'warning',
+                        'published' => 'success',
+                        'Super Admin' => 'danger',
+                    })
                     ->sortable(),
                 Tables\Columns\TextColumn::make('current_team_id')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('profile_photo_path')
-                    ->searchable(),
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
