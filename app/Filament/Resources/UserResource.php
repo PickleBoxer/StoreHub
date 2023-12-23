@@ -46,6 +46,11 @@ class UserResource extends Resource
                     ->numeric(),
                 Forms\Components\TextInput::make('profile_photo_path')
                     ->maxLength(2048),
+                Forms\Components\Select::make('roles')
+                    ->relationship('roles', 'name')
+                    ->multiple()
+                    ->preload()
+                    ->searchable(),
             ]);
     }
 
