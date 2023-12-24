@@ -34,6 +34,7 @@ class AppPanelProvider extends PanelProvider
                 MenuItem::make()
                     ->label('Admin Panel')
                     ->icon('heroicon-o-cog-6-tooth')
+                    ->visible(fn (): bool => auth()->user()?->isSuperAdmin())
                     ->url('/admin'),
             ])
             ->discoverResources(in: app_path('Filament/App/Resources'), for: 'App\\Filament\\App\\Resources')
