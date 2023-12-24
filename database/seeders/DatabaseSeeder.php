@@ -21,5 +21,12 @@ class DatabaseSeeder extends Seeder
 
         $this->call(ShieldSeeder::class);
         $this->call(UserSeeder::class);
+
+        /**
+         * Conditionally calls the CustomerSeeder class if the application environment is set to 'local'.
+         */
+        //if (app()->environment('local')) {
+        //   $this->call(CustomerSeeder::class);
+        //}
     }
 }
