@@ -43,6 +43,9 @@ class TeamResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
+                Tables\Columns\ImageColumn::make('users.profile_photo_url')
+                    ->circular()
+                    ->stacked(),
                 Tables\Columns\IconColumn::make('personal_team')
                     ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
