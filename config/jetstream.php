@@ -61,7 +61,8 @@ return [
         // Features::termsAndPrivacyPolicy(),
         Features::profilePhotos(),
         Features::api(),
-        Features::teams(['invitations' => true]),
+        // Invitation emails to users that are invited to teams True/False
+        Features::teams(['invitations' => false]),
         Features::accountDeletion(),
     ],
 
