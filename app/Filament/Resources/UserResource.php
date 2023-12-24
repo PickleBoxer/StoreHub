@@ -24,6 +24,7 @@ class UserResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
+            // TODO: On create, create default team for jetstream
             ->schema([
                 Forms\Components\TextInput::make('name')
                     ->required()
