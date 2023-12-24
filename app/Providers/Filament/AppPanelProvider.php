@@ -27,6 +27,10 @@ class AppPanelProvider extends PanelProvider
             ->id('app')
             ->path('app')
             ->profile()
+            // profile link goes to Laravel's default profile page (Jetstream)
+            ->userMenuItems([
+                'profile' => MenuItem::make()->url(fn (): string => route('profile.show'))
+            ])
             ->colors([
                 'primary' => Color::Amber,
             ])
