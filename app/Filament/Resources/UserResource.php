@@ -25,7 +25,7 @@ class UserResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-            // TODO: On create, create default team for jetstream
+            // TODO: On create, create default team for jetstream - https://filamentphp.com/docs/3.x/panels/resources/creating-records#customizing-the-creation-process
             ->schema([
                 Forms\Components\TextInput::make('name')
                     ->required()
