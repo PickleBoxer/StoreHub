@@ -27,7 +27,8 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
-            ->login()
+            // Remove login to use Laravel's default login (Jetstream)
+            //->login()
             ->profile()
             ->colors([
                 'primary' => Color::Amber,
