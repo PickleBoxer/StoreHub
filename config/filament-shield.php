@@ -19,7 +19,7 @@ return [
     'super_admin' => [
         'enabled' => true,
         'name' => 'Super Admin',
-        'define_via_gate' => false,
+        'define_via_gate' => true,
         'intercept_gate' => 'before', // after
     ],
 
@@ -52,7 +52,7 @@ return [
         'pages' => true,
         'widgets' => true,
         'resources' => true,
-        'custom_permissions' => false,
+        'custom_permissions' => true,
     ],
 
     'generator' => [
@@ -61,7 +61,7 @@ return [
     ],
 
     'exclude' => [
-        'enabled' => true,
+        'enabled' => false,
 
         'pages' => [
             'Dashboard',
@@ -81,7 +81,7 @@ return [
     ],
 
     'register_role_policy' => [
-        'enabled' => false,
+        'enabled' => true,
     ],
 
 ];
