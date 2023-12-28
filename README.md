@@ -93,3 +93,15 @@ When using the laravelsail/phpXX-composer image, you should use the same version
 ```bash
 php artisan migrate:fresh --seed
 ```
+
+### 5. Laravael link storage
+
+```bash
+php artisan storage:link
+```
+
+### 6. Build assets
+
+```bash
+npm install && npm run dev
+```
