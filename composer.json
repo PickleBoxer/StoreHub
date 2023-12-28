@@ -17,6 +17,7 @@
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^3.0",
+        "prestashop/prestashop-webservice-lib": "dev-master",
         "stechstudio/filament-impersonate": "^3.5"
     },
     "require-dev": {
@@ -35,7 +36,10 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "files": [
+            "vendor/prestashop/prestashop-webservice-lib/PSWebServiceLibrary.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
